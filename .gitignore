@@ -1,5 +1,4 @@
-.venvcs
 .vencs
-.env
+
 .vscode
 db.sqlite3
