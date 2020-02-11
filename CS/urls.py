@@ -1,4 +1,4 @@
-"""CS URL Configuration
+"""pcs URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -13,8 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import include, path
-
 from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
@@ -31,16 +29,11 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^',include(router.urls)),
-    re_path(r'^api/v1/login', include('Login.urls')),
-
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    re_path(r'^api/v1/',include('Login.urls')),
 ]
