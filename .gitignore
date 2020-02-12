@@ -1,4 +1,5 @@
-.vencs
-
-.vscode
-db.sqlite3
+.vencs/
+.env
+.vscode/
+.sqlite3
+.gitignore
