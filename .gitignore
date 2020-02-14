@@ -1,7 +1,5 @@
 .env
 .venv/
-.vscode/
-.sqlite3
-.gitignore
-
+vscode/
+db.sqlite3
 
