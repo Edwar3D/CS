@@ -1,5 +1,7 @@
-.vencs/
 .env
+.venv/
 .vscode/
 .sqlite3
 .gitignore
+
+

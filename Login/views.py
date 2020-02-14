@@ -51,3 +51,6 @@ class CustonAuthToken(ObtainAuthToken):
             'user_id': user.pk,
             'username': user.username
         })
+
+
+
