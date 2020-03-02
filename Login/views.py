@@ -6,9 +6,13 @@ from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from rest_framework.views import APIView
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import generics
+
+from rest_framework.permissions import IsAuthenticated 
 
 #Importar modelo
 from Login.models import Example2
@@ -17,6 +21,8 @@ from Login.serializer import Example2Serializers
 
 
 class ExampleList2(APIView):
+   # authentication_classes = [TokenAuthentication, BasicAuthentication]
+    #permission_classes = [IsAuthenticated]
     #METODO GET PARA SOLICITAR INFO
     def get(self,request, format=None):
         print("Metodo get filter")
@@ -24,6 +30,9 @@ class ExampleList2(APIView):
         #many = True si aplica si retorno multiples objectos
         serializer = Example2Serializers(queryset, many=True)
         return Response(serializer.data)
+
+
+        
 
     def post(self, request, format=None):
         serializer = Example2Serializers(data= request.data)
@@ -51,6 +60,7 @@ class CustonAuthToken(ObtainAuthToken):
             'user_id': user.pk,
             'username': user.username
         })
+
 
 
 
